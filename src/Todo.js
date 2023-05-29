@@ -8,12 +8,12 @@ const style={
     textComplete: 'ml-2 cursor-pointer line-through',
     button: `cursor-pointer flex items-center`
 }
-const Todo = ({todo}) => {
+const Todo = ({todo, toggleComplete}) => {
   return (
-    <li className={style.li}>
+    <li className={todo.completed ? style.licomplete : style.li}>
         <div className={style.row}>
-            <input type="checkbox"/>
-            <p className={style.text}>{todo}</p>
+            <input onChange={()=> toggleComplete(todo)} type="checkbox" checked={todo.completed ? 'checked' : ''}/>
+            <p onCLick={()=> toggleComplete(todo)} className={todo.completed ? style.textComplete : style.text}>{todo.text}</p>
 
         </div>
         <button>{<FaRegTrashAlt />}</button>
